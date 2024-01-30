@@ -1,0 +1,71 @@
+<mat-toolbar class="toolbarNew" color="primary">
+    <span class="title-center">Usluga</span>
+</mat-toolbar>
+<div class="container mat-elevation-z8">
+        <mat-table #table matSort [dataSource]="dataSource" class="mat-cell">
+        
+        <!--ID-->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef >Id</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+        </ng-container>
+
+        <!--Filijala-->
+        <ng-container matColumnDef="filijala">
+            <mat-header-cell *matHeaderCellDef >Filijala</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.filijala.adresa }}</mat-cell>
+        </ng-container>
+
+        <!--Naziv-->
+        <ng-container matColumnDef="naziv">
+            <mat-header-cell *matHeaderCellDef >Naziv</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.naziv }}</mat-cell>
+        </ng-container>
+
+        <!--Opis usluge-->
+        <ng-container matColumnDef="opisUsluge">
+            <mat-header-cell *matHeaderCellDef >Opis usluge</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.opisUsluge }}</mat-cell>
+        </ng-container>
+
+        <!--Datum ugovora-->
+        <ng-container matColumnDef="datumUgovora">
+            <mat-header-cell *matHeaderCellDef >Datum ugovora</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.datumUgovora }}</mat-cell>
+        </ng-container>
+
+        <!--Provizija-->
+        <ng-container matColumnDef="provizija">
+            <mat-header-cell *matHeaderCellDef >Provizija</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.provizija }}</mat-cell>
+        </ng-container>
+
+        <!--Korisnik-->
+        <ng-container matColumnDef="korisnik">
+            <mat-header-cell *matHeaderCellDef >Korisnik</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.korisnik.id }}</mat-cell>
+        </ng-container>
+        <!-- actions -->
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>
+                <button mat-icon-button color="primary" (click)="openDialog(1)">
+                    <mat-icon aria-label="Example icon-button with a heart icon">Add</mat-icon>
+                </button>
+            </mat-header-cell>
+
+            <mat-cell *matCellDef="let row; let i = index">
+                <button mat-icon-button color="primary" (click)="openDialog(2, row)">
+                    <mat-icon aria-label="Edit">Edit</mat-icon>
+                </button>
+
+                <button mat-icon-button color="primary" (click)="openDialog(3, row)">
+                    <mat-icon aria-label="Delete">Delete</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row style="cursor: default" *matRowDef="let row; columns: displayedColumns">
+        </mat-row>
+    </mat-table>
+</div>

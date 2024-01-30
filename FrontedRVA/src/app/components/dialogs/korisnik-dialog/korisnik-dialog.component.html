@@ -1,0 +1,43 @@
+<div class="container">
+    <h3 mat-dialog-title *ngIf="flagKorisnikDialog == 1">Dodavanje korisnika</h3>
+    <h3 mat-dialog-title *ngIf="flagKorisnikDialog == 2">Modifikacija korisnika: {{dataKorisnik.ime}}</h3>
+    <h3 mat-dialog-title *ngIf="flagKorisnikDialog == 3">Brisanje artikla: {{dataKorisnik.ime}}</h3>
+    <form class="mat-dialog-content" #formControl="ngForm">
+        <div class="form">
+            <mat-form-field>
+                <input matInput placeholder="Ime" [(ngModel)]="dataKorisnik.ime" name="ime" [disabled]="flagKorisnikDialog == 3"
+                    required>
+            </mat-form-field>
+        </div>
+        <div class="form">
+            <mat-form-field>
+                <input matInput placeholder="Prezime" [(ngModel)]="dataKorisnik.prezime" name="prezme"
+                    [disabled]="flagKorisnikDialog == 3" required>
+            </mat-form-field>
+        </div>
+        <div class="form">
+            <mat-form-field>
+                <input matInput placeholder="Maticni broj" [(ngModel)]="dataKorisnik.maticniBroj" name="maticniBroj"
+                    [disabled]="flagKorisnikDialog == 3" required>
+            </mat-form-field>
+        </div>
+        <div mat-dialog-actions>
+            <button mat-button *ngIf="flagKorisnikDialog==1" type="submit" [mat-dialog-close]="1" (click)="add()"
+                [disabled]="!formControl.valid">
+                Sačuvaj
+            </button>
+            <button mat-button *ngIf="flagKorisnikDialog==2" type="submit" [mat-dialog-close]="1" (click)="update()"
+                [disabled]="!formControl.valid">
+                Sačuvaj
+            </button>
+            <button mat-button *ngIf="flagKorisnikDialog==3" type="submit" [mat-dialog-close]="1" (click)="delete()">
+                Obriši
+            </button>
+            <button mat-button (click)="cancel()">
+                Poništi
+            </button>
+        </div>
+
+    </form>
+
+</div>
